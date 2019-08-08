@@ -4,11 +4,13 @@ services:
     image: devmx/app:latest
     build: .
     restart: always
-    port:
+    ports:
       - "80:8085"
     volumes:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+    depends_on:
+      - database
   database:
     image: postgres:9.6
     restart: always
